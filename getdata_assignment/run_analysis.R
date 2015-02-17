@@ -1,14 +1,14 @@
 ## Loading of the training data ##
 
-x.train <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/train/X_train.txt")
-subject.train <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/train/subject_train.txt")
-y.train <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/train/y_train.txt")
+x.train <- read.table("train/X_train.txt")
+subject.train <- read.table("train/subject_train.txt")
+y.train <- read.table("train/y_train.txt")
 
 ## Loading of the test data ##
 
-x.test <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/test/X_test.txt")
-subject.test <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/test/subject_test.txt")
-y.test <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/test/y_test.txt")
+x.test <- read.table("test/X_test.txt")
+subject.test <- read.table("test/subject_test.txt")
+y.test <- read.table("test/y_test.txt")
 
 
 ## Merging of the datasets ##
@@ -19,12 +19,12 @@ y <- rbind(y.train, y.test)
 
 
 ## Loading the information about the features and the activity names and extracting the features with mean and standard deviation
-features <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/features.txt")
+features <- read.table("features.txt")
 ind1<-grepl("std()",features[,2]) | grepl("mean()",features[,2])
 
 
 ## Rename the activities 
-activities <- read.table("/home/madleni/Sonstiges/Getdata/UCI HAR Dataset/activity_labels.txt")
+activities <- read.table("activity_labels.txt")
 for (i in 1:nrow(activities)) {
   ind2 <- which(y==activities[i,1])
   y[ind2,] <- toString(activities[i,2])
